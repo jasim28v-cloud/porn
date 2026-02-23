@@ -3,75 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STUDIO HOME WORK | Exclusive Content</title>
+    <title>STUDIO HOME WORK | VIP CONTENT</title>
     <style>
-        :root { --main-red: #ff004c; --gold: #d4af37; --bg: #0a0a0a; }
-        body { background-color: var(--bg); color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; overflow-x: hidden; }
+        :root { --main-red: #ff004c; --gold: #d4af37; --bg: #050505; }
+        body { background-color: var(--bg); color: white; font-family: 'Arial', sans-serif; margin: 0; }
         
-        /* الهيدر */
-        header { padding: 15px; text-align: center; border-bottom: 2px solid var(--main-red); background: rgba(0,0,0,0.9); position: sticky; top: 0; z-index: 1000; box-shadow: 0 0 15px var(--main-red); }
-        .logo { font-size: 1.8rem; font-weight: bold; color: var(--main-red); text-transform: uppercase; letter-spacing: 2px; }
+        header { padding: 15px; text-align: center; border-bottom: 2px solid var(--main-red); background: #000; box-shadow: 0 5px 15px rgba(255, 0, 76, 0.4); }
+        .logo { font-size: 2rem; font-weight: bold; color: var(--main-red); text-shadow: 2px 2px #000; }
 
-        /* قسم الترحيب */
-        .hero { padding: 40px 20px; text-align: center; background: linear-gradient(45deg, #1a1a1a, #000); border-bottom: 1px solid #333; }
-        .hero h1 { color: var(--gold); font-size: 2.2rem; margin-bottom: 10px; }
-        .hero p { color: #ccc; font-size: 1.1rem; }
-
-        /* شبكة الفيديوهات */
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; padding: 25px; }
-        .video-card { background: #111; border-radius: 12px; overflow: hidden; border: 1px solid #222; position: relative; cursor: pointer; transition: 0.4s; }
-        .video-card:hover { transform: translateY(-10px); border-color: var(--main-red); box-shadow: 0 10px 20px rgba(255, 0, 76, 0.3); }
+        .video-card { background: #111; border-radius: 12px; overflow: hidden; border: 1px solid #222; cursor: pointer; transition: 0.3s; position: relative; }
+        .video-card:hover { transform: scale(1.05); border-color: var(--gold); }
         
-        .thumbnail { width: 100%; aspect-ratio: 16/9; background: #222; display: flex; align-items: center; justify-content: center; position: relative; }
-        .thumbnail img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
-        .play-icon { position: absolute; font-size: 3rem; color: white; opacity: 0.9; text-shadow: 0 0 10px var(--main-red); }
+        .thumbnail { width: 100%; aspect-ratio: 16/9; background: url('https://via.placeholder.com/400x225/111/ff004c?text=CLICK+TO+WATCH') center/cover; position: relative; }
+        .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 50px; color: var(--main-red); filter: drop-shadow(0 0 10px #000); }
 
-        .info { padding: 15px; }
-        .info h3 { margin: 0; font-size: 1.1rem; color: #fff; }
-        .btn-watch { display: block; width: 100%; padding: 10px; margin-top: 10px; background: var(--main-red); color: white; text-align: center; text-decoration: none; border-radius: 5px; font-weight: bold; }
+        .info { padding: 15px; text-align: center; }
+        .btn-link { display: block; background: linear-gradient(to right, var(--main-red), #b30036); color: white; padding: 12px; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 5px; }
+        
+        /* رسالة منبثقة لضمان فتح القناة */
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; flex-direction: column; align-items: center; justify-content: center; }
+        .overlay-content { background: #1a1a1a; padding: 30px; border-radius: 20px; border: 2px solid var(--gold); text-align: center; }
+        .overlay h2 { color: var(--gold); }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">STUDIO HOME WORK</div>
-    </header>
+    <header><div class="logo">STUDIO HOME WORK</div></header>
 
-    <div class="hero">
-        <h1>محتوى حصري وجريء 🔥</h1>
-        <p>انضم إلينا وشاهد أقوى المقاطع بجودة عالية</p>
-    </div>
-
-    <div class="grid" id="videoGrid">
+    <div class="grid" id="mainGrid">
         </div>
+
+    <div id="redirectOverlay" class="overlay">
+        <div class="overlay-content">
+            <h2>جاري التحميل...</h2>
+            <p>اضغط على الزر أدناه للدخول إلى القناة السرية</p>
+            <a href="https://t.me/+AssDGz2-Feg3Mzli" id="finalBtn" class="btn-link" style="background: #0088cc;">دخول قناة تيليجرام 🚀</a>
+        </div>
+    </div>
 
     <script>
         const adLink = "https://omg10.com/4/10637838";
         const telegramLink = "https://t.me/+AssDGz2-Feg3Mzli";
-        
-        // إنشاء 12 فيديو وهمي
-        const grid = document.getElementById('videoGrid');
+        const grid = document.getElementById('mainGrid');
+
         for (let i = 1; i <= 12; i++) {
             const card = document.createElement('div');
             card.className = 'video-card';
             card.innerHTML = `
-                <div class="thumbnail">
-                    <img src="https://picsum.photos/seed/${i+10}/400/225" alt="Video Thumb">
-                    <div class="play-icon">▶</div>
-                </div>
+                <div class="thumbnail"><div class="play-btn">▶️</div></div>
                 <div class="info">
-                    <h3>فيديو حصري رقم ${i}</h3>
-                    <div class="btn-watch">شاهد الآن</div>
+                    <h3>شاهد المقطع الحصري ${i}</h3>
+                    <div class="btn-link">مشاهدة الآن 🔥</div>
                 </div>
             `;
             
             card.onclick = function() {
-                // فتح رابط الإعلان أولاً
+                // الخطوة 1: فتح رابط الإعلان في نافذة جديدة
                 window.open(adLink, '_blank');
-                // فتح رابط التيليجرام ثانياً بعد تأخير بسيط
+                
+                // الخطوة 2: إظهار رسالة الدخول للقناة في نفس الصفحة لضمان عمل الرابط
+                document.getElementById('redirectOverlay').style.display = 'flex';
+                
+                // الخطوة 3: محاولة فتح التيليجرام تلقائياً بعد ثانيتين
                 setTimeout(() => {
-                    window.open(telegramLink, '_blank');
-                }, 500);
+                    window.location.href = telegramLink;
+                }, 2000);
             };
             
             grid.appendChild(card);
