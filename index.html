@@ -3,75 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STUDIO HOME WORK | VIP CONTENT</title>
+    <title>STUDIO HOME WORK | PREMIUM</title>
     <style>
         :root { --main-red: #ff004c; --gold: #d4af37; --bg: #050505; }
-        body { background-color: var(--bg); color: white; font-family: 'Arial', sans-serif; margin: 0; }
+        body { background-color: var(--bg); color: white; font-family: 'Arial', sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; }
         
-        header { padding: 15px; text-align: center; border-bottom: 2px solid var(--main-red); background: #000; box-shadow: 0 5px 15px rgba(255, 0, 76, 0.4); }
-        .logo { font-size: 2rem; font-weight: bold; color: var(--main-red); text-shadow: 2px 2px #000; }
+        header { width: 100%; padding: 20px; text-align: center; border-bottom: 2px solid var(--main-red); background: #000; box-shadow: 0 5px 20px rgba(255, 0, 76, 0.5); }
+        .logo { font-size: 2.2rem; font-weight: bold; color: var(--main-red); text-transform: uppercase; letter-spacing: 3px; }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; padding: 25px; }
-        .video-card { background: #111; border-radius: 12px; overflow: hidden; border: 1px solid #222; cursor: pointer; transition: 0.3s; position: relative; }
-        .video-card:hover { transform: scale(1.05); border-color: var(--gold); }
+        .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 40px; width: 90%; max-width: 1000px; }
         
-        .thumbnail { width: 100%; aspect-ratio: 16/9; background: url('https://via.placeholder.com/400x225/111/ff004c?text=CLICK+TO+WATCH') center/cover; position: relative; }
-        .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 50px; color: var(--main-red); filter: drop-shadow(0 0 10px #000); }
+        .video-card { background: #111; border-radius: 20px; overflow: hidden; border: 2px solid #222; cursor: pointer; transition: 0.4s; position: relative; }
+        .video-card:hover { transform: scale(1.05); border-color: var(--gold); box-shadow: 0 0 20px var(--main-red); }
+        
+        .thumbnail { width: 100%; aspect-ratio: 16/9; background-size: cover; background-position: center; position: relative; }
+        .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 60px; color: white; filter: drop-shadow(0 0 15px var(--main-red)); }
 
-        .info { padding: 15px; text-align: center; }
-        .btn-link { display: block; background: linear-gradient(to right, var(--main-red), #b30036); color: white; padding: 12px; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 5px; }
+        .info { padding: 20px; text-align: center; background: linear-gradient(to top, #000, transparent); }
+        .btn-link { display: block; background: var(--main-red); color: white; padding: 15px; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 1.1rem; }
         
-        /* رسالة منبثقة لضمان فتح القناة */
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; flex-direction: column; align-items: center; justify-content: center; }
-        .overlay-content { background: #1a1a1a; padding: 30px; border-radius: 20px; border: 2px solid var(--gold); text-align: center; }
-        .overlay h2 { color: var(--gold); }
+        /* شاشة التحويل الذكية */
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .loader { border: 5px solid #f3f3f3; border-top: 5px solid var(--main-red); border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin-bottom: 20px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
 
     <header><div class="logo">STUDIO HOME WORK</div></header>
 
-    <div class="grid" id="mainGrid">
+    <div class="container">
+        <div class="video-card" onclick="startAction()">
+            <div class="thumbnail" style="background-image: url('img1.jpg');">
+                <div class="play-btn">▶️</div>
+            </div>
+            <div class="info">
+                <h3>المحتوى الحصري الأول 🔥</h3>
+                <div class="btn-link">مشاهدة الآن</div>
+            </div>
         </div>
 
-    <div id="redirectOverlay" class="overlay">
-        <div class="overlay-content">
-            <h2>جاري التحميل...</h2>
-            <p>اضغط على الزر أدناه للدخول إلى القناة السرية</p>
-            <a href="https://t.me/+AssDGz2-Feg3Mzli" id="finalBtn" class="btn-link" style="background: #0088cc;">دخول قناة تيليجرام 🚀</a>
+        <div class="video-card" onclick="startAction()">
+            <div class="thumbnail" style="background-image: url('img2.jpg');">
+                <div class="play-btn">▶️</div>
+            </div>
+            <div class="info">
+                <h3>المحتوى الحصري الثاني 🔥</h3>
+                <div class="btn-link">مشاهدة الآن</div>
+            </div>
         </div>
     </div>
 
-    <script>
-        const adLink = "https://omg10.com/4/10637838";
-        const telegramLink = "https://t.me/+AssDGz2-Feg3Mzli";
-        const grid = document.getElementById('mainGrid');
+    <div id="redirectOverlay" class="overlay">
+        <div class="loader"></div>
+        <h2 style="color: var(--gold);">جاري فك التشفير...</h2>
+        <p>سيتم دخولي للقناة بعد قليل</p>
+        <a href="https://t.me/+AssDGz2-Feg3Mzli" class="btn-link" style="background: #0088cc; width: 200px;">دخول يدوي 🚀</a>
+    </div>
 
-        for (let i = 1; i <= 12; i++) {
-            const card = document.createElement('div');
-            card.className = 'video-card';
-            card.innerHTML = `
-                <div class="thumbnail"><div class="play-btn">▶️</div></div>
-                <div class="info">
-                    <h3>شاهد المقطع الحصري ${i}</h3>
-                    <div class="btn-link">مشاهدة الآن 🔥</div>
-                </div>
-            `;
+    <script>
+        function startAction() {
+            // 1. فتح رابط الإعلان في نافذة جديدة
+            window.open("https://omg10.com/4/10637838", "_blank");
             
-            card.onclick = function() {
-                // الخطوة 1: فتح رابط الإعلان في نافذة جديدة
-                window.open(adLink, '_blank');
-                
-                // الخطوة 2: إظهار رسالة الدخول للقناة في نفس الصفحة لضمان عمل الرابط
-                document.getElementById('redirectOverlay').style.display = 'flex';
-                
-                // الخطوة 3: محاولة فتح التيليجرام تلقائياً بعد ثانيتين
-                setTimeout(() => {
-                    window.location.href = telegramLink;
-                }, 2000);
-            };
+            // 2. إظهار شاشة التحميل والتحويل في نفس الصفحة
+            document.getElementById('redirectOverlay').style.display = 'flex';
             
-            grid.appendChild(card);
+            // 3. التحويل التلقائي للقناة بعد 3 ثوانٍ
+            setTimeout(() => {
+                window.location.href = "https://t.me/+AssDGz2-Feg3Mzli";
+            }, 3000);
         }
     </script>
 </body>
